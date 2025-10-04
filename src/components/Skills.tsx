@@ -35,12 +35,13 @@ const Skills = () => {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skills.map((skill) => (
+          {skills.map((skill, index) => (
             <div
               key={skill.category}
-              className="bg-card border border-border rounded-xl p-6 shadow-card transition-smooth hover:shadow-glow hover:scale-105 hover:border-primary/50"
+              className="bg-card border border-border rounded-xl p-6 shadow-card transition-smooth hover:shadow-glow hover:scale-105 hover:border-primary/50 animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}
             >
-              <skill.icon className="h-12 w-12 text-primary mb-4" />
+              <skill.icon className="h-12 w-12 text-primary mb-4 animate-float" />
               <h3 className="text-xl font-semibold mb-4">{skill.category}</h3>
               <ul className="space-y-2">
                 {skill.items.map((item) => (

@@ -1,6 +1,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
+import ecommerceImg from "@/assets/project-ecommerce.jpg";
+import tasksImg from "@/assets/project-tasks.jpg";
+import aiImg from "@/assets/project-ai.jpg";
+import socialImg from "@/assets/project-social.jpg";
 
 const projects = [
   {
@@ -8,28 +12,32 @@ const projects = [
     description: "Full-stack online store with payment integration, inventory management, and admin dashboard",
     tech: ["React", "Node.js", "MongoDB", "Stripe"],
     github: "https://github.com",
-    live: "https://example.com"
+    live: "https://example.com",
+    image: ecommerceImg
   },
   {
     title: "Task Management App",
     description: "Real-time collaborative task tracker with team features and analytics",
     tech: ["Next.js", "PostgreSQL", "Prisma", "WebSocket"],
     github: "https://github.com",
-    live: "https://example.com"
+    live: "https://example.com",
+    image: tasksImg
   },
   {
     title: "AI Content Generator",
     description: "AI-powered tool for generating marketing content using OpenAI API",
     tech: ["React", "Python", "FastAPI", "OpenAI"],
     github: "https://github.com",
-    live: "https://example.com"
+    live: "https://example.com",
+    image: aiImg
   },
   {
     title: "Social Media Dashboard",
     description: "Analytics dashboard for tracking social media performance across platforms",
     tech: ["Vue.js", "Express", "Redis", "Chart.js"],
     github: "https://github.com",
-    live: "https://example.com"
+    live: "https://example.com",
+    image: socialImg
   }
 ];
 
@@ -45,11 +53,22 @@ const Projects = () => {
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <Card
               key={project.title}
-              className="shadow-card transition-smooth hover:shadow-glow hover:scale-[1.02] hover:border-primary/50"
+              className="shadow-card transition-smooth hover:shadow-glow hover:scale-[1.02] hover:border-primary/50 overflow-hidden group animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s`, opacity: 0, animationFillMode: 'forwards' }}
             >
+              {/* Project Image */}
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-60" />
+              </div>
+              
               <CardHeader>
                 <CardTitle className="text-2xl">{project.title}</CardTitle>
                 <CardDescription className="text-base">{project.description}</CardDescription>
